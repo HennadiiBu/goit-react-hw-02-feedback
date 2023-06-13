@@ -12,28 +12,10 @@ export class App extends Component {
     positiveFeedback: 0,
   };
 
-  addGood = () => {
+  leaveFeedback = event => {
     this.setState({
-      good: this.state.good + 1,
+      [event.target.name]: Number.parseInt(event.target.value) + 1,
     });
-    this.total();
-    this.positiveFeedback();
-  };
-
-  addNeutral = () => {
-    this.setState({
-      neutral: this.state.neutral + 1,
-    });
-    this.total();
-    this.positiveFeedback();
-  };
-
-  addBad = () => {
-    this.setState({
-      bad: this.state.bad + 1,
-    });
-    this.total();
-    this.positiveFeedback();
   };
 
   total = () => {
@@ -57,12 +39,10 @@ export class App extends Component {
 
   render() {
     return (
-      <div className='container'>
+      <div className="container">
         <FeedBack
           stat={this.state}
-          clickGood={this.addGood}
-          clickNeutral={this.addNeutral}
-          clickBad={this.addBad}
+          leaveFeedback={this.leaveFeedback}
           total={this.total}
           positiveFeedback={this.positiveFeedback}
         />
